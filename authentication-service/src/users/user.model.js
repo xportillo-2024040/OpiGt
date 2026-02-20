@@ -122,11 +122,7 @@ export const UserProfile = sequelize.define(
         key: 'id',
       },
     },
-    ProfilePicture: {
-      type: DataTypes.STRING(512),
-      defaultValue: '',
-      field: 'profile_picture',
-    },
+    
     Phone: {
       type: DataTypes.STRING(8),
       allowNull: false,

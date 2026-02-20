@@ -6,7 +6,7 @@ import {
   authRateLimit,
   requestLimit,
 } from '../../middlewares/request-limit.js';
-import { upload, handleUploadError } from '../../helpers/file-upload.js';
+
 import {
   validateRegister,
   validateLogin,
@@ -73,8 +73,6 @@ const router = Router();
 router.post(
   '/register',
   authRateLimit,
-  upload.single('profilePicture'),
-  handleUploadError,
   validateRegister,
   authController.register
 );

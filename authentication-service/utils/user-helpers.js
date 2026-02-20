@@ -1,14 +1,6 @@
-import {
-  getFullImageUrl,
-  getDefaultAvatarPath,
-} from '../helpers/cloudinary-service.js';
+
 
 export const buildUserResponse = (user) => {
-  // Obtener la URL de la imagen de perfil
-  const profilePictureUrl =
-    user.UserProfile && user.UserProfile.ProfilePicture
-      ? getFullImageUrl(user.UserProfile.ProfilePicture)
-      : getFullImageUrl(getDefaultAvatarPath());
 
   return {
     id: user.Id,

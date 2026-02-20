@@ -1,3 +1,4 @@
+
 import nodemailer from 'nodemailer';
 import { config } from '../configs/config.js';
 
@@ -46,7 +47,7 @@ export const sendVerificationEmail = async (email, name, verificationToken) => {
       html: `
         <h2>Welcome ${name}!</h2>
         <p>Please verify your email address by clicking the link below:</p>
-        <a href='${verificationUrl}' style='background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>
+        <a href='${verificationUrl}' style='background-color: #005f28; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>
             Verify Email
         </a>
         <p>If you cannot click the link, copy and paste this URL into your browser:</p>
@@ -80,7 +81,7 @@ export const sendPasswordResetEmail = async (email, name, resetToken) => {
         <h2>Password Reset Request</h2>
         <p>Hello ${name},</p>
         <p>You requested to reset your password. Click the link below to reset it:</p>
-        <a href='${resetUrl}' style='background-color: #dc3545; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>
+        <a href='${resetUrl}' style='background-color: #b12a2a; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>
             Reset Password
         </a>
         <p>If you cannot click the link, copy and paste this URL into your browser:</p>
@@ -106,7 +107,7 @@ export const sendWelcomeEmail = async (email, name) => {
     const mailOptions = {
       from: `${config.smtp.fromName} <${config.smtp.fromEmail}>`,
       to: email,
-      subject: 'Welcome to AuthDotnet!', // Aligned with .NET
+      subject: 'Welcome to OpiGt!', // Aligned with .NET
       html: `
         <h2>Welcome to OpiGt, ${name}!</h2>
         <p>Your account has been successfully verified and activated.</p>

@@ -1,10 +1,8 @@
-import {
-  User,
-  UserProfile,
-  UserEmail,
-  UserPasswordReset,
-} from '../src/users/user.model.js';
-import { UserRole, Role } from '../src/auth/role.model.js';
+
+import '../src/users/user-model.js'
+import '../src/auth/role-model.js'
+import { User, UserProfile, UserEmail, UserPasswordReset } from '../src/users/user-model.js';
+import { Role, UserRole } from '../src/auth/role-model.js';
 import { USER_ROLE } from './role-constants.js';
 import { hashPassword } from '../utils/password-utils.js';
 import { Op } from 'sequelize';
@@ -105,16 +103,10 @@ export const createNewUser = async (userData) => {
     );
 
     // Crear el perfil del usuario
-    const { getDefaultAvatarPath } = await import(
-      '../helpers/cloudinary-service.js'
-    );
-    const defaultAvatarFilename = getDefaultAvatarPath();
-
     await UserProfile.create(
       {
         UserId: user.Id,
         Phone: phone,
-        ProfilePicture: profilePicture || defaultAvatarFilename,
       },
       { transaction }
     );

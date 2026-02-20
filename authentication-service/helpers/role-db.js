@@ -1,5 +1,6 @@
-import { Role, UserRole } from '../src/auth/role.model.js';
-import { User, UserEmail, UserProfile } from '../src/users/user.model.js';
+
+import '../src/auth/role-model.js'
+import '../src/users/user-model.js'
 import { ALLOWED_ROLES } from './role-constants.js';
 
 export const getRoleByName = async (roleName) => {

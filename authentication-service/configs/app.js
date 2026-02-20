@@ -1,28 +1,29 @@
-"use strict";
 
-import express from "express";
-import cors from "cors";
-import helmet from "helmet";
-import morgan from "morgan";
-import { dbConnection } from "./db.js";
+'use strict';
+
+import express from 'express';
+import authRoutes from '../src/auth/auth-routes.js'
+import userRoutes from '../src/users/user-routes.js'
+import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import { dbConnection } from './db.js';
 // Ensure models are registered before DB sync
-import "../src/users/user.model.js";
-import "../src/auth/role.model.js";
-import { requestLimit } from "../middlewares/request-limit.js";
-import { corsOptions } from "./cors-configuration.js";
-import { helmetConfiguration } from "./helmet-configuration.js";
+import '../src/users/user-model.js';
+import '../src/auth/role-model.js'
+import { requestLimit } from '../middlewares/request-limit.js';
+import { corsOptions } from './cors-configuration.js';
+import { helmetConfiguration } from './helmet-configuration.js';
 import {
   errorHandler,
   notFound,
-} from "../middlewares/server-genericError-handler.js";
-import authRoutes from "../src/auth/auth.routes.js";
-import userRoutes from "../src/users/user.routes.js";
+} from '../middlewares/server-genericError-handler.js';
 
-const BASE_PATH = "/api/v1";
+const BASE_PATH = '/api/v1';
 
 const middlewares = (app) => {
-  app.use(express.urlencoded({ extended: false, limit: "10mb" }));
-  app.use(express.json({ limit: "10mb" }));
+  app.use(express.urlencoded({ extended: false, limit: '10mb' }));
+  app.use(express.json({ limit: '10mb' }));
   app.use(cors(corsOptions));
   app.use(helmet(helmetConfiguration));
   app.use(requestLimit);
@@ -35,9 +36,9 @@ const routes = (app) => {
 
   app.get(`${BASE_PATH}/health`, (req, res) => {
     res.status(200).json({
-      status: "Healthy",
+      status: 'Healthy',
       timestamp: new Date().toISOString(),
-      service: "OpiGt Authentication Service",
+      service: 'OpiGt Authentication Service',
     });
   });
   // 404 handler (standardized)
@@ -47,12 +48,12 @@ const routes = (app) => {
 export const initServer = async () => {
   const app = express();
   const PORT = process.env.PORT;
-  app.set("trust proxy", 1);
+  app.set('trust proxy', 1);
 
   try {
     await dbConnection();
     // Seed essential data (roles)
-    const { seedRoles } = await import("../helpers/role-seed.js");
+    const { seedRoles } = await import('../helpers/role-seed.js');
     await seedRoles();
     middlewares(app);
     routes(app);

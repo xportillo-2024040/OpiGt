@@ -1,3 +1,4 @@
+
 export const helmetConfiguration = {
   contentSecurityPolicy: {
     useDefaults: true,

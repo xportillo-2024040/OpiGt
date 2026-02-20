@@ -1,3 +1,4 @@
+
 import crypto from 'crypto';
 import {
   checkUserExists,
@@ -42,7 +43,7 @@ const getExpirationTime = (timeString) => {
 
 export const registerUserHelper = async (userData) => {
   try {
-    const { email, username, password, name, surname, phone, profilePicture } =
+    const { email, username, password, name, surname, phone } =
       userData;
 
     // Validation is now handled by express-validator middleware in routes
@@ -52,7 +53,7 @@ export const registerUserHelper = async (userData) => {
         'Ya existe un usuario con este email o nombre de usuario'
       );
     }
-
+    
     // Crear el usuario
     const newUser = await createNewUser({
       name,
@@ -61,7 +62,6 @@ export const registerUserHelper = async (userData) => {
       email,
       password,
       phone,
-      profilePicture: profilePictureToStore,
     });
 
     // Generar token de verificación de email
@@ -143,7 +143,6 @@ export const loginUserHelper = async (emailOrUsername, password) => {
     const userDetails = {
       id: fullUser.id,
       username: fullUser.username,
-      profilePicture: fullUser.profilePicture,
       role: fullUser.role,
     };
 

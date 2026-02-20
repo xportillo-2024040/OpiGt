@@ -1,3 +1,4 @@
+
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -21,34 +22,6 @@ export const config = {
     password: process.env.SMTP_PASSWORD,
     fromEmail: process.env.EMAIL_FROM,
     fromName: process.env.EMAIL_FROM_NAME,
-  },
-
-  // File Upload Configuration (aligned with .NET FileValidator)
-  upload: {
-    maxSize: 5 * 1024 * 1024, // 5MB (aligned with .NET)
-    allowedTypes: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'], // aligned with .NET
-    uploadPath: process.env.UPLOAD_PATH,
-  },
-
-  // Cloudinary Configuration
-  cloudinary: {
-    cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-    apiKey: process.env.CLOUDINARY_API_KEY,
-    apiSecret: process.env.CLOUDINARY_API_SECRET,
-    baseUrl: process.env.CLOUDINARY_BASE_URL,
-    // Expand nested env references if not supported by dotenv
-    // If CLOUDINARY_DEFAULT_AVATAR contains ${...}, build it from folder + filename
-    defaultAvatarPath:
-      process.env.CLOUDINARY_DEFAULT_AVATAR &&
-      !process.env.CLOUDINARY_DEFAULT_AVATAR.includes('${')
-        ? process.env.CLOUDINARY_DEFAULT_AVATAR
-        : [
-            process.env.CLOUDINARY_FOLDER,
-            process.env.CLOUDINARY_DEFAULT_AVATAR_FILENAME,
-          ]
-            .filter(Boolean)
-            .join('/'),
-    folder: process.env.CLOUDINARY_FOLDER,
   },
 
   // Rate Limiting (aligned with .NET AuthPolicy and ApiPolicy)

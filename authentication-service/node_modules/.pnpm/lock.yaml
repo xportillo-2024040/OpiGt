@@ -44,9 +44,6 @@ importers:
       nodemailer:
         specifier: ^6.9.17
         version: 6.10.1
-      nodemon:
-        specifier: ^3.1.10
-        version: 3.1.13
       pg:
         specifier: ^8.13.1
         version: 8.18.0
@@ -56,6 +53,10 @@ importers:
       uuid:
         specifier: ^11.1.0
         version: 11.1.0
+    devDependencies:
+      nodemon:
+        specifier: ^3.1.10
+        version: 3.1.13
 
 packages:
 

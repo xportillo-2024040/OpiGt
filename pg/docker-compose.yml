@@ -3,11 +3,11 @@ version: '3.8'
 services: 
   postgres:
     image: postgres:13
-    container_name: opigt_postgres
+    container_name: in6am_postgres
     environment:
-      POSTGRES_USER: OPIGT
-      POSTGRES_PASSWORD: OpiGt2026
-      POSTGRES:DB: OpiGt
+      POSTGRES_USER: IN6AM
+      POSTGRES_PASSWORD: Informatica2026
+      POSTGRES_DB: OpiGt
     ports:
       - "5438:5432"
     volumes:

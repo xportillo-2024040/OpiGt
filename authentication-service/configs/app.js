@@ -26,7 +26,7 @@ const middlewares = (app) => {
   app.use(cors(corsOptions));
   app.use(helmet(helmetConfiguration));
   app.use(requestLimit);
-  app.use(morgan(process.env.NODE_ENV === "development" ? "dev" : "combined"));
+  app.use(morgan('dev'));
 };
 
 const routes = (app) => {
